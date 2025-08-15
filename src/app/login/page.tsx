@@ -1,4 +1,4 @@
-'use client';
+"use client";
 import { useUser } from "@/context/UserContext";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -57,6 +57,8 @@ export default function LoginPage() {
           Login
         </button>
       </form>
+
+    
     </div>
   );
 }
