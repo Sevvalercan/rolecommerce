@@ -15,7 +15,7 @@ const dummyProducts: Product[] = [
   { id: 3, name: "Ürün 3", price: 19.99, stock: 0 },
 ];
 
-export default function ProductsPage() {
+export default function HomePage() {
   const [products, setProducts] = useState<Product[]>(dummyProducts);
 
   return (
