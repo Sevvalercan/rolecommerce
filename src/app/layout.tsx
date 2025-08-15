@@ -1,6 +1,7 @@
 import "./globals.css";
 import { UserProvider } from "@/context/UserContext";
 import Header from "@/components/Header";
+import { CartProvider } from "@/context/CartContext";
 
 export const metadata = {
   title: "RoleCommerce",
@@ -12,9 +13,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="tr">
       <body className="bg-gray-50 text-gray-800">
         <UserProvider>
-          <Header />
-          <main className="container mx-auto p-4">{children}</main>
-        </UserProvider>
+  <CartProvider>
+    <Header />
+    <main className="container mx-auto p-4">{children}</main>
+  </CartProvider>
+</UserProvider>
       </body>
     </html>
   );

@@ -1,6 +1,6 @@
 "use client";
-
 import { useState } from "react";
+import { useCart } from "@/context/CartContext";
 
 type Product = {
   id: number;
@@ -16,11 +16,13 @@ const dummyProducts: Product[] = [
 ];
 
 export default function HomePage() {
-  const [products, setProducts] = useState<Product[]>(dummyProducts);
+  const [products] = useState<Product[]>(dummyProducts);
+  const { addToCart, cart } = useCart();
 
   return (
     <div className="p-4">
       <h1 className="text-2xl font-bold mb-4">Ürünler</h1>
+      <p>Sepette {cart.reduce((a, c) => a + c.quantity, 0)} adet ürün var</p>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         {products.map((product) => (
           <div
@@ -34,10 +36,12 @@ export default function HomePage() {
             </div>
             <button
               className={`mt-2 px-3 py-1 rounded text-white ${
-                product.stock > 0 ? "bg-blue-500 hover:bg-blue-600" : "bg-gray-400 cursor-not-allowed"
+                product.stock > 0
+                  ? "bg-blue-500 hover:bg-blue-600"
+                  : "bg-gray-400 cursor-not-allowed"
               }`}
               disabled={product.stock === 0}
-              onClick={() => alert(`${product.name} sepete eklendi!`)}
+              onClick={() => addToCart(product)}
             >
               Sepete Ekle
             </button>

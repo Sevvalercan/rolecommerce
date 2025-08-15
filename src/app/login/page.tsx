@@ -14,16 +14,15 @@ export default function LoginPage() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Dummy auth
     if (email === "admin@example.com" && password === "1234") {
       login(email, "admin");
-      router.push("/roles/admin/users");
+      router.push("/rolers/admin/users");
     } else if (email === "user@example.com" && password === "1234") {
       login(email, "user");
-      router.push("/roles/user/products");
+      router.push("/rolers/user/products");
     } else if (email === "seller@example.com" && password === "1234") {
       login(email, "seller");
-      router.push("/roles/seller/orders");
+      router.push("/rolers/seller/orders");
     } else {
       setError("Email veya şifre yanlış");
     }
@@ -57,8 +56,6 @@ export default function LoginPage() {
           Login
         </button>
       </form>
-
-    
     </div>
   );
 }
